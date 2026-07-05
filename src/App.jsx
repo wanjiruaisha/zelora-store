@@ -15,6 +15,7 @@ import NotFound from "@/pages/NotFound";
 import Overview from "@/pages/product-details/Overview";
 import Reviews from "@/pages/product-details/Reviews";
 import Specifications from "@/pages/product-details/Specifications";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/login" element={<Login />} />
+
+          <Route path="/signup" element={<SignUp/>} />
 
           <Route
             path="/checkout"

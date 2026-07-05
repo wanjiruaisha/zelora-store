@@ -55,30 +55,36 @@ function Login() {
   return (
     <main className="mx-auto grid min-h-[calc(100vh-160px)] max-w-7xl items-center gap-10 px-4 py-10 lg:grid-cols-2">
       <section>
-        <p className="text-sm font-medium text-slate-500">Secure access</p>
+        <p className="text-sm font-medium text-muted-foreground">
+          Secure access
+        </p>
 
-        <h1 className="mt-2 max-w-xl text-5xl font-bold tracking-tight text-slate-950">
+        <h1 className="mt-2 max-w-xl text-5xl font-bold tracking-tight text-foreground">
           Sign in to continue your checkout.
         </h1>
 
-        <p className="mt-5 max-w-lg leading-7 text-slate-500">
-          Access your shopping bag, complete your order, and keep your checkout
-          details organized in one smooth flow.
+        <p className="mt-5 max-w-lg leading-7 text-muted-foreground">
+          Access your account, continue your shopping session, and complete your
+          order securely.
         </p>
 
-        <div className="mt-8 rounded-3xl bg-slate-50 p-5 text-sm text-slate-600">
-          <p className="font-semibold text-slate-950">Demo login</p>
+        <div className="mt-8 rounded-3xl bg-muted p-5 text-sm text-muted-foreground">
+          <p className="font-semibold text-foreground">New here?</p>
+
           <p className="mt-2">
-            Use any valid email address and a password with at least 6
-            characters.
+            Create an account first, then use the same email and password to
+            sign in.
           </p>
         </div>
       </section>
 
-      <section className="rounded-[2rem] border bg-white p-6 shadow-sm sm:p-8">
+      <section className="rounded-[2rem] border bg-card p-6 shadow-sm sm:p-8">
         <div>
-          <h2 className="text-2xl font-bold text-slate-950">Welcome back</h2>
-          <p className="mt-2 text-sm text-slate-500">
+          <h2 className="text-2xl font-bold text-card-foreground">
+            Welcome back
+          </h2>
+
+          <p className="mt-2 text-sm text-muted-foreground">
             Enter your details to continue.
           </p>
         </div>
@@ -87,13 +93,13 @@ function Login() {
           <div>
             <label
               htmlFor="email"
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-foreground"
             >
               Email address
             </label>
 
             <div className="relative mt-2">
-              <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 
               <Input
                 id="email"
@@ -110,13 +116,13 @@ function Login() {
           <div>
             <label
               htmlFor="password"
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-foreground"
             >
               Password
             </label>
 
             <div className="relative mt-2">
-              <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 
               <Input
                 id="password"
@@ -124,7 +130,7 @@ function Login() {
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="At least 6 characters"
+                placeholder="Enter your password"
                 className="h-11 pl-9"
               />
             </div>
@@ -141,11 +147,21 @@ function Login() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-500">
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          New to Zelora?{" "}
+          <Link
+            to="/signup"
+            className="font-semibold text-foreground hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
+
+        <p className="mt-3 text-center text-sm text-muted-foreground">
           Just browsing?{" "}
           <Link
             to="/products"
-            className="font-semibold text-slate-950 hover:underline"
+            className="font-semibold text-foreground hover:underline"
           >
             Return to shop
           </Link>
