@@ -16,6 +16,7 @@ import Overview from "@/pages/product-details/Overview";
 import Reviews from "@/pages/product-details/Reviews";
 import Specifications from "@/pages/product-details/Specifications";
 import SignUp from "./pages/SignUp";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/signup" element={<SignUp/>} />
+
+          <Route path="/wishlist" element={<Wishlist/>} />
+
 
           <Route
             path="/checkout"

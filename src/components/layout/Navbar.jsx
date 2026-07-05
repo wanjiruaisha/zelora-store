@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { LogOut, Menu, ShoppingBag, User, X } from "lucide-react";
+import { LogOut, Menu, ShoppingBag, User, X, Heart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { cartItems } = useCart();
   const { user, logout } = useAuth();
+  const { wishlistCount } = useWishlist();
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -38,7 +40,11 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
+        <Link
+          to="/"
+          className="flex items-center gap-3"
+          onClick={closeMobileMenu}
+        >
           <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-950 text-sm font-bold text-white">
             Z
           </div>
@@ -63,6 +69,10 @@ function Navbar() {
             Shop
           </NavLink>
 
+          <NavLink to="/wishlist" className={navLinkClass}>
+            Wishlist
+          </NavLink>
+
           <NavLink to="/cart" className={navLinkClass}>
             Cart
           </NavLink>
@@ -81,6 +91,18 @@ function Navbar() {
             {cartCount > 0 && (
               <Badge className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-xs">
                 {cartCount}
+              </Badge>
+            )}
+          </Link>
+
+          <Link to="/wishlist" className="relative" onClick={closeMobileMenu}>
+            <Button variant="outline" size="icon" aria-label="Open wishlist">
+              <Heart className="h-5 w-5" />
+            </Button>
+
+            {wishlistCount > 0 && (
+              <Badge className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-xs">
+                {wishlistCount}
               </Badge>
             )}
           </Link>
@@ -137,6 +159,14 @@ function Navbar() {
               onClick={closeMobileMenu}
             >
               Shop
+            </NavLink>
+
+            <NavLink
+              to="/wishlist"
+              className={mobileNavLinkClass}
+              onClick={closeMobileMenu}
+            >
+              Wishlist
             </NavLink>
 
             <NavLink
