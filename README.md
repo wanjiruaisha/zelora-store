@@ -102,7 +102,7 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/zelora-store.git
+git clone https://github.com/wanjiruaisha/zelora-store.git
 ```
 
 ### 2. Navigate into the project folder
@@ -315,6 +315,7 @@ npm run preview
 ## Author
 
 Built and maintained by **Aisha**.
+---
 
 ##License
 
