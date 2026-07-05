@@ -11,9 +11,13 @@ import {
 } from "@/components/ui/card";
 
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useCart();
+  const { toggleWishlistItem, isInWishlist } = useWishlist();
+
+  const productIsWishlisted = isInWishlist(product.id);
 
   return (
     <Card className="group flex h-full flex-col overflow-hidden border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -29,12 +33,26 @@ function ProductCard({ product }) {
         </Link>
 
         <Button
+          type="button"
           variant="outline"
           size="icon"
-          className="absolute right-6 top-6 rounded-full bg-white"
-          aria-label="Add to wishlist"
+          className={`absolute right-6 top-6 rounded-full bg-white transition ${
+            productIsWishlisted
+              ? "border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700"
+              : "text-slate-600 hover:text-red-600"
+          }`}
+          onClick={() => toggleWishlistItem(product)}
+          aria-label={
+            productIsWishlisted
+              ? "Remove from wishlist"
+              : "Add to wishlist"
+          }
         >
-          <Heart className="h-4 w-4" />
+          <Heart
+            className={`h-4 w-4 ${
+              productIsWishlisted ? "fill-current" : ""
+            }`}
+          />
         </Button>
       </CardHeader>
 
